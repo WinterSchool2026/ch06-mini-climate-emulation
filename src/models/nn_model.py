@@ -329,13 +329,13 @@ class NNBaseline(Emulator):
         train_dataloader = DataLoader(
             train_dataset,
             batch_size=None,
-            num_workers= 16#int(trainer_params.get('num_workers', 0)),
+            num_workers= 0#int(trainer_params.get('num_workers', 0)),
         )
 
         val_dataloader = DataLoader(
             val_dataset,
             batch_size=None,
-            num_workers= 16#int(trainer_params.get('num_workers', 0)),
+            num_workers= 0#int(trainer_params.get('num_workers', 0)),
         )
 
         logger.info("NNBaseline fitting ...")
