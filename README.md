@@ -1,6 +1,6 @@
 # Mini Climate Emulation Challenge
 
-<a target="_blank" href="https://colab.research.google.com/github/WinterSchool2026/ch06-mini-climate-emulation/blob/ch06/getting_started.ipynb">
+<a target="_blank" href="https://colab.research.google.com/github/WinterSchool2026/ch06-mini-climate-emulation/blob/main/getting_started.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
 
