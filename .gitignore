@@ -17,6 +17,7 @@ requirements.txt
 environment.yml
 predictions_lite/
 explore_indices.ipynb
+*copy.py
 
 # C extensions
 *.so
