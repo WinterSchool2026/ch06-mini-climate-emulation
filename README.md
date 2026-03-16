@@ -58,25 +58,54 @@ Target outcome by end of week:
 
 These questions guide model development and evaluation decisions:
 
-1. How should we handle non-normal or long-tailed distributions in the input variables?
-2. What is the optimal train/ validation split? Should historical data be included in training?
-3. Which model class gives the best accuracy–compute trade-off for this task?
-4. Should we predict the evaluation indices directly, or predict full climate fields and compute indices afterward?
-5. How can we scale the same training pipeline from the lite dataset to the full dataset?
-6. Which variables and regions contribute most to model error, and can targeted weighting help?
-7. How sensitive are results to lead time (near-term vs long-term horizons) across SSP scenarios?
-8. Do we need variable-specific loss weighting so low-variance targets are not overshadowed?
-9. How stable are results across random seeds and initialization choices?
-10. Which calibration method best improves probabilistic reliability of predictions?
+1. Machine learning questions.
+  - How should we handle non-normal or long-tailed distributions in the input variables?
+  - What is the optimal train/ validation split? Should historical data be included in training?
+  - How can we scale the same training pipeline from the lite dataset to the full dataset?
+2. Scientific questions
+  - Which variables and regions contribute most to model error, and can targeted weighting help?
+  - How sensitive are results to lead time (near-term vs long-term horizons) across SSP scenarios?
+  - Can casual methods improve climate emulators?
 
 ## Recommended reading material
 
-Related but not required readings & resources:
+**Data and previous challenges**
   - [NorESM2 Models](https://gmd.copernicus.org/articles/13/6165/2020/)
   - [Emulation challenge example: ClimateBench](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021MS002954)
   - [Another emulation challenge example](https://ui.adsabs.harvard.edu/abs/2023AGUFMGC33F1206L/abstract)
-  - [Some nice code for climate emulation](https://github.com/blutjens/climate-emulator-tutorial)
   - [Indices used for evaluation](https://climpact-sci.org/indices/)
+**Climate emulators**
+  [Some nice code for climate emulation](https://github.com/blutjens/climate-emulator-tutorial)
+**Causality**
+- Regularize using environments or anchor variables:
+  - [AR6 land regions](https://essd.copernicus.org/articles/12/2959/2020/)
+  ```
+  import regionmask
+
+  ar6_regions = regionmask.defined_regions.ar6.land
+  ```
+  - CO2, predicted global mean temperature predictions, or enso?
+- Methods
+  - Invariant risk minimization [paper](https://arxiv.org/pdf/1907.02893) and code: causal_models/irm.py
+  - Anchor regression [old paper](https://arxiv.org/pdf/1801.06229) [newer paper](https://arxiv.org/abs/2403.01865) and [code](https://github.com/homerdurand/anchorMVA)
+    ```
+    from MVA_algo import ReducedRankRegressor 
+    from AnchorOptimalProjector import *
+
+    # Training a RRRR
+    anchor = ReducedRankRegressor(rank=1, reg=0.1)
+    # Projecting the training data in anchor space
+    # take gamma > 1
+    AOP = AnchorOptimalProjection(gamma=1.5)
+    X_train_transform, Y_train_transform = AOP.fit_transform(A_train_scaled, X_train_scaled, Y_train_scaled)
+
+    # training a anchor model
+    anchor.fit(X_train_transform, Y_train_transform)
+
+    # predicting with anchor model
+    Y_pred_test_anchor = anchor.predict(X_test_scaled)
+    ```
+- Random idea- can we merge linear pattern scaling and anchor regression?
 
 
 ## Getting Started
