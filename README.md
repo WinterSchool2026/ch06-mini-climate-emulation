@@ -105,7 +105,7 @@ These questions guide model development and evaluation decisions:
     # predicting with anchor model
     Y_pred_test_anchor = anchor.predict(X_test_scaled)
     ```
-- Random idea- can we merge linear pattern scaling and anchor regression?
+  - Hilbert schmidt independence criteria (HSIC) regularization [paper](https://proceedings.mlr.press/v162/saengkyongam22a/saengkyongam22a.pdf)
 
 
 ## Getting Started
