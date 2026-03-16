@@ -74,8 +74,10 @@ These questions guide model development and evaluation decisions:
   - [Emulation challenge example: ClimateBench](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021MS002954)
   - [Another emulation challenge example](https://ui.adsabs.harvard.edu/abs/2023AGUFMGC33F1206L/abstract)
   - [Indices used for evaluation](https://climpact-sci.org/indices/)
+
 **Climate emulators**
   [Some nice code for climate emulation](https://github.com/blutjens/climate-emulator-tutorial)
+  
 **Causality**
 - Regularize using environments or anchor variables:
   - [AR6 land regions](https://essd.copernicus.org/articles/12/2959/2020/)
