@@ -83,27 +83,7 @@ Related but not required readings & resources:
 
 ### Google Colab (recommended for the challenge)
 
-1. Create a new Colab notebook and switch runtime to GPU (optional but recommended).
-2. Clone this repository and move into it:
-```
-!git clone https://github.com/IPL-UV/ClimX.git
-%cd ClimX
-```
-3. Install dependencies:
-```
-!pip install -r requirements-colab.txt
-```
-4. Open and run `playground.ipynb` (Colab-first starter) or execute:
-```
-from pathlib import Path
-from src.utils.hugging_face_utils import get_dataset_from_hf
-
-data_path = Path('data/')
-DATA_VERSION = 'lite'
-
-get_dataset_from_hf(data_path, variant=DATA_VERSION)
-```
-5. Start training baselines and iterating on your chosen track.
+1. Open and run getting_started.ipynb in colab
 
 ### Local conda setup (optional)
 
@@ -112,7 +92,7 @@ get_dataset_from_hf(data_path, variant=DATA_VERSION)
 ```
 mamba env create -f environment.yml
 ```
-3. Run `playground.ipynb`.
+3. Run `gettiong_started.ipynb`.
 
 ### Data size note
 
