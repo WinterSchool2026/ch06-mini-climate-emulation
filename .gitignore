@@ -14,7 +14,6 @@ slides.md
 slide_figures/
 playground.ipynb
 requirements.txt
-environment.yml
 predictions_lite/
 explore_indices.ipynb
 *copy.py
